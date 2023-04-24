@@ -1,0 +1,323 @@
+usage of Ngpugrade in angular8?
+
+ng update @angular/core@^13 @angular/cli@^13
+
+What is single page application?
+
+which command is used to run static code analusis within  an angular application.
+
+ng lint
+
+form in angular 8?
+reactive forms
+Template-drivr  forms
+
+
+diference between reactive form and template-driven form
+
+difference between promise and observable in angular
+
+Explain lay loading in Angular ?
+
+the diffrence types of angular directives are as follows \
+component 
+Attributes directives 
+structural directives.
+
+
+====================================================
+A single page application (SPA) is a type of web application that dynamically updates the content on a single web page, without the need for a full page reload. Angular is a popular framework for building SPAs, and it provides several features and tools to simplify the process.
+
+Here are the steps to create a single page application in Angular:
+
+Create a new Angular project using the Angular CLI by running the following command in your terminal:
+
+arduino
+Copy code
+ng new my-spa-app
+Navigate to the project directory using the cd command:
+
+bash
+Copy code
+cd my-spa-app
+Generate a new component using the Angular CLI:
+
+arduino
+Copy code
+ng generate component home
+Add a route to the home component by modifying the app-routing.module.ts file:
+
+python
+Copy code
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { HomeComponent } from './home/home.component';
+
+const routes: Routes = [
+  { path: '', component: HomeComponent }
+];
+
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
+})
+export class AppRoutingModule { }
+Update the app.component.html file to include the router outlet:
+
+php
+Copy code
+<router-outlet></router-outlet>
+Run the application using the Angular CLI:
+
+Copy code
+ng serve
+Now you should be able to navigate to http://localhost:4200 in your web browser and see the home component displayed on a single page. To add more components and routes, simply repeat steps 3 and 4 for each new component.
+
+
+============================================
+To run static code analysis in an Angular project, you can use the ng lint command. This command uses the TSLint static code analysis tool to check your code for potential errors, bugs, and style issues.
+
+To run ng lint, navigate to your project directory in the terminal and enter the following command:
+
+ 
+ng lint
+By default, ng lint will run the TSLint configuration defined in your project's tslint.json file. However, you can also specify a different configuration file using the --config flag. For example:
+
+css
+Copy code
+ng lint --config path/to/your/tslint.json
+Once the command runs, it will output any issues it finds to the terminal. You can then review the issues and make any necessary changes to your code. Note that some issues can be automatically fixed using the --fix flag, like this:
+
+ anothre command to fixed 
+ng lint --fix
+This command will attempt to automatically fix any issues it finds, although some issues may still require manual intervention.
+
+
+=====================================
+
+Reactive Forms is a powerful feature in Angular that allows you to build complex and dynamic forms using a reactive programming approach. 
+Reactive Forms provide a lot of flexibility and power when it comes to building complex forms in Angular.
+ 
+ Importing the ReactiveFormsModule
+Before we can create a Reactive Form, we need to import the ReactiveFormsModule into our Angular module. We can do this by adding the following line to our module file:
+
+ 
+import { ReactiveFormsModule } from '@angular/forms';
+
+@NgModule({
+  imports: [
+    // other imports
+    ReactiveFormsModule
+  ],
+  // other module configuration
+})
+export class AppModule { }
+
+
+Creating a FormGroup
+The first step in creating a Reactive Form is to create a FormGroup instance.
+ A FormGroup is an object that represents a collection of form controls.
+ We can create a FormGroup in our component code using the FormBuilder service:
+ 
+ ==================================================================
+ 
+ Creating Form Controls
+In addition to creating a FormGroup,
+ we also need to create form controls to bind to our HTML form elements.
+ We can create form controls using the formBuilder.control() method:
+ 
+ =========================
+ Template-driven Forms is one of the two ways to build forms. 
+ Template-driven Forms are built using Angular templates and are easier to get started with than Reactive Forms. 
+ In a Template-driven Form, the form controls are defined in the template and are bound to properties on the component.
+ 
+ we use the ngModel directive to bind the form inputs to properties on the component class. When the user submits the form, the onSubmit() method is called.
+
+To use Template-driven Forms, we need to import the FormsModule into our Angular module:
+
+
+
+
+Template-driven Forms have some limitations compared to Reactive Forms. For example,
+ they don't provide as much flexibility when it comes to complex form validation, and they can be harder to test. However,
+ for simple forms, they can be a good choice and can help speed up development time.
+ 
+ ==========================================================
+ there are two ways to build forms: Reactive Forms and Template-driven Forms. Here are some of the key differences between the two:
+
+Data Model: In Reactive Forms, the data model for the form is defined in the component class as a FormGroup.
+ In Template-driven Forms, the data model is defined in the template itself using ngModel directives.
+
+Form Control Creation: In Reactive Forms, form controls are created programmatically in the component class, and then added to the FormGroup.
+ In Template-driven Forms, form controls are created implicitly in the template by using ngModel or ngModelGroup directives.
+
+Form Validation: In Reactive Forms, you can implement complex form validation logic using the Validators API, which allows for synchronous and asynchronous validation.
+ In Template-driven Forms, validation is mostly done using built-in directives like required, minLength, and maxLength.
+
+Testing: Reactive Forms are generally easier to test, since the form control logic is contained in the component class.
+ Template-driven Forms can be harder to test, since much of the form control logic is defined in the template itself.
+
+Flexibility: Reactive Forms provide more flexibility and control over form behavior than Template-driven Forms, making them better suited for more complex forms.
+
+Overall, Reactive Forms are typically better suited for larger, more complex forms, 
+while Template-driven Forms are a good choice for simpler forms that can be defined mostly in the template.
+ However, both approaches have their strengths and weaknesses, 
+ and the choice of which one to use will depend on the specific requirements of your application.
+
+
+=============================================================
+Promises and Observables 
+both Promises and Observables are used to handle asynchronous operations,
+ but there are some key differences between the two:
+
+Multiple Values: An Observable can emit multiple values over time, 
+while a Promise can only resolve once and return a single value.
+
+Cancellation: Observables can be cancelled, 
+while Promises cannot.
+
+Lazy Execution: Observables are lazy, meaning they will not execute until they are subscribed to.
+ Promises, on the other hand, execute immediately upon creation.
+
+Stream Transformation: Observables can be transformed using operators like map, filter, and reduce, 
+while Promises cannot be transformed in the same way.
+
+Error Handling: Observables have more advanced error handling capabilities than Promises,
+ allowing for better control over how errors are handled and propagated.
+
+Chaining: Promises can be chained using .then(), while Observables are typically chained using operators like switchMap, mergeMap, and concatMap.
+
+In summary, Observables provide more flexibility and control over asynchronous operations,
+ but they can also be more complex to work with than Promises.
+ Promises are simpler and more straightforward, but are less flexible and have more limited capabilities. 
+ The choice of which to use will depend on the specific requirements of your application.
+ ====================================================================================================
+ 
+ 
+Explain lazy loading in Angular ?
+
+the diffrence types of angular directives are as follows \
+component 
+Attributes directives 
+structural directives.
+
+
+
+
+
+
+
+
+
+
+
+Lazy loading is a technique in Angular for loading modules on demand, rather than loading everything up front when the application first starts. With lazy loading, modules are only loaded when they are actually needed, which can help to reduce the initial load time of the application and improve its overall performance.
+
+To implement lazy loading in Angular, we first need to create a separate module for each feature of our application. Then, we need to configure our routing so that each feature module is only loaded when its corresponding route is requested.
+
+Here's an example of how to implement lazy loading in Angular:
+
+Create a feature module for the feature we want to lazy load. 
+This module should contain all of the components, services, and other functionality related to the feature.
+
+
+the feature module will only be loaded when the /feature route is requested. 
+This can help to improve the performance of our application, especially for larger applications with many features.
+
+
+
+
+
+======================================================================================
+
+Component Directives: Components are the most common type of directive in Angular.
+ They are used to define reusable UI elements that can be added to any HTML template. 
+ A component directive consists of a template, styling, and a controller that defines the logic and data binding for the component.
+
+Attribute Directives: Attribute directives are used to modify the behavior or appearance of existing HTML elements. 
+They are applied as attributes to the element, and can be used to modify things like the element's style, class, or behavior.
+
+Structural Directives: Structural directives are used to add or remove elements from the DOM based on a condition. 
+They are applied to an element using an asterisk (*) syntax and can be used to add or remove elements based on conditions such as loops, conditions, and switches.
+
+
+=========================================================================================
+SELECT MAX(tour_count.tours) FROM ( SELECT ( SELECT COUNT(*) AS num FROM COUNTRIES c WHERE c.MIN_SIZE <= a.FAMILY_SIZE ) AS tours FROM FAMILIES a ) AS tour_count
+
+
+Mahindra 475 DI XP Plus
+
+-------------------------------------------------------------------------------------
+
+
+/* General Coding:
+* Given an array of integer in which all numbers occur even times except for one number occurs odd times, find it.
+*
+* Example:
+* Input: [1,1,2,2,3,3,4,4,5,5,1,5,1]
+* Output: 5
+*/int find(int[] list, int size) {    int l=0 , r=list.length-1;  for (int i=0; i< list.length;i++) {        for (int j=0; j< list.length;j++) {      if(list[i]==list[j])      {       l++;      }    }      if(list[i]%2  != 0)
+{
+return list[i];
+}    
+}
+// int n= list.length-l;/* SQL:
+* Two tables, employee (employee_id, employee_name, dept_id, ..) and department (dept_id, ;;, …).
+* a) Select employee name and department name
+* b) Select all the departments without any employees
+* c) Select all the departments with more than 100 employees
+select e.employee_name,d.dept_name
+from epmloyee e, department
+where e. dept id =select * from departments
+where dept-id not in (select dept id from employee);
+select * from departments
+inner join employee
+on e.dept id= d.dept id
+group by e.emplouyee namehaving count (*)  > 100; /* General Coding:
+* Given an array of integer in which all numbers occur even times except for one number occurs odd times, find it.
+*
+* Example:
+* Input: [1,1,2,2,3,3,4,4,5,5,1,5,1]
+* Output: 5
+*/int find(int[] list, int size) {        
+}
+/* SQL:
+* Two tables, employee (employee_id, employee_name, dept_id, ..)
+ and department (dept_id, dept_name, …).
+* a) Select employee name and department name
+select *  FROM employees e,department d WHERE e.dep_id = d.dep_id;
+
+* b) Select all the departments without any employees
+SELECT b.dep_id, count(a.dep_id) FROM department b
+LEFT OUTER JOIN employees a ON a.dep_id=b.dep_id
+GROUP BY b.dep_id HAVING count(a.dep_id) = 0;
+
+
+* c) Select all the departments with more than 100 employees
+SELECT d.dpt_name
+  FROM employee 
+     INNER JOIN department
+       ON d.emp_dept =e.dpt_code
+        GROUP BY d.dpt_name
+          HAVING COUNT(*) > 100;
+
+*/select department as d, employee as e{
+select employee_name from employee, department_name from department
+where e.department_id = d.department_id  select unique department_name from departments 
+
+
+
+ /* JavaScript/Frontend:
+* What is the behavior and output of the following
+*/
+function resolveAfter5Seconds(x) {   
+ return new Promise(resolve =>  setTimeout(() => resolve(x), 5000));
+}
+async function foo(x) {    
+    const a = await resolveAfter5Seconds(20);    const b = await resolveAfter5Seconds(30);    return x + a + b;
+}async function bar(x) {   
+     const a = resolveAfter5Seconds(20);    const b = resolveAfter5Seconds(30);    return x + await a + await b;
+}
+foo(10).then(v => console.log(v));
+bar(10).then(v => console.log(v));
+ 
